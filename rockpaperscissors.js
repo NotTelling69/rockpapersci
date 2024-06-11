@@ -1,10 +1,8 @@
-// This is the logic to get the computer and human moves. 
-// They can use the same logic as it's just rock paper scissors.
-
+// Initialize the human and computer scores
 let humanScore = 0;
 let computerScore = 0;
 
-
+// Function to randomly determine the computer's choice
 function getComputerChoice () {
     let rng = Math.floor(Math.random() * 3) + 1;
     let choice;
@@ -27,15 +25,12 @@ function getComputerChoice () {
 function playRound(humanChoice) {
 // This is to check if there is a draw by seeing if they have the same move chosen. 
     const computerChoice = getComputerChoice();
+
     let resultMessage = `Human player chose ${humanChoice} and computer player chose ${computerChoice}.`
 
     if (humanChoice === computerChoice) {
         resultMessage += "It's a draw.";
-        
-    }
-// Short circuiting lets us check for human victory condition.
-// If no human victory conditions are met, then by default the computer wins
-    if ((humanChoice === "Rock" && computerChoice === "Scissors") 
+    } else if ((humanChoice === "Rock" && computerChoice === "Scissors") 
     || (humanChoice === "Scissors" && computerChoice === "Paper")
     || (humanChoice === "Paper" && computerChoice === "Rock")) {
         resultMessage += " Congratulations, you have defeated the computer. +1 to your point total.";
@@ -74,7 +69,7 @@ function endGame() {
     if (humanScore === 5) {
         alert("Congratulations! You've won the game.");
     } else {
-        alert("Sorry, you've lost the game. Better luck next time.");
+        alert("Sorry, you've lost the game to the computer. Better luck next time.");
     }
     // Reset scores for a new game
     humanScore = 0;
